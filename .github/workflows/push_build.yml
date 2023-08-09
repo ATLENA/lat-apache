@@ -27,13 +27,16 @@ jobs:
       # Build Install file
       - name: Build Open LA:T Web install file
         run: mvn -B package --file web-dist/pom_release.xml -Dcompile.os.name=${{ github.job }}
+      - uses: de-vri-es/setup-git-credentials@v2
+        with:
+          credentials: ${{ secrets.GIT_CREDENTIALS }}
       - name: git push
         run: |
           rm -rf /tmp/apache-test
           mkdir -p /tmp/apache-test
           git clone https://github.com/ATLENA/lat-engine-temp.git /tmp/apache-temp
-          git config --global user.email "songyeon0058@gmail.com"
-          git config --global user.name "pinepond"
+          git config --global user.email "lat-apache@github.com"
+          git config --global user.name "lat-apache-actioin"
           mkdir -p /tmp/apache-temp/apache/${{ github.job }}
           cp -rf web-dist/target/apache/* /tmp/apache-temp/apache/${{ github.job }}/      
           cd /tmp/apache-temp && git add . && git commit -a -m "Pushed from lat-apache" && git push
