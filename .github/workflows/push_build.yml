@@ -16,6 +16,9 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+      #temp
+      - name: env
+        run: env
       # Compile Web
       - name: Compile Web
         uses: ./web-compile/action/centos7
