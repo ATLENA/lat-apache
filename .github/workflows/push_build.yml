@@ -8,9 +8,9 @@ jobs:
     name: ${{ matrix.target-os }}
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         target-os: [centos7, rocky8, amazonlinux2]
-        max-parallel: 1
     env:
       TARGET_OS: ${{ matrix.target-os }}
     steps:
