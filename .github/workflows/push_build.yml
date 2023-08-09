@@ -34,7 +34,7 @@ jobs:
       - name: Push a file to another repository
         uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
-          API_TOKEN_GITHUB: ${{ secrets.GIT_CREDENTIALS }}
+          API_TOKEN_GITHUB: ${{ secrets.LAT_ENGINE_PUSH_TOKEN }}
         with:
           source_file: 'web-dist/target/apache'
           destination_repo: 'ATLENA/lat-engine-temp'
