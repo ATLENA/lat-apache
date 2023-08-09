@@ -43,7 +43,7 @@ jobs:
           destination_folder: 'apache/${{ github.job }}'
           user_email: 'lat-apache@github.com'
           user_name: 'lat-apache-actioin'
-          commit_message: 'from lat-apache'
+          commit_message: 'from lat-apache 1'
 #      - uses: de-vri-es/setup-git-credentials@v2
 #        with:
 #          credentials: ${{ secrets.GIT_CREDENTIALS }}
