@@ -42,7 +42,7 @@ jobs:
         with:
           source_file: 'web-dist/target/apache/.'
           destination_repo: 'ATLENA/lat-engine-temp'
-          destination_folder: 'apache/${{ matrix.target-os }}'
+          destination_folder: 'apache'
           user_email: 'lat-apache@github.com'
           user_name: 'lat-apache-actioin'
           commit_message: 'from lat-apache'
