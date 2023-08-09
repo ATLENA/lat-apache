@@ -16,28 +16,43 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      # Compile Web
-      - name: Compile Web
-        uses: ./web-compile/action/centos7
-      - name: maven-settings-xml-action
-        uses: whelk-io/maven-settings-xml-action@v14
-        with:
-          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/atlena/*" }]'
-          servers: ${{secrets.GH_MVN_REPO_USER_INFO}}
+#      # Compile Web
+#      - name: Compile Web
+#        uses: ./web-compile/action/centos7
+#      - name: maven-settings-xml-action
+#        uses: whelk-io/maven-settings-xml-action@v14
+#        with:
+#          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/atlena/*" }]'
+#          servers: ${{secrets.GH_MVN_REPO_USER_INFO}}
       # Build Install file
-      - name: Build Open LA:T Web install file
-        run: mvn -B package --file web-dist/pom_release.xml -Dcompile.os.name=${{ github.job }}
-      - uses: de-vri-es/setup-git-credentials@v2
+#      - name: Build Open LA:T Web install file
+#        run: mvn -B package --file web-dist/pom_release.xml -Dcompile.os.name=${{ github.job }}
+      - name: temp job
+        run : |
+          mkdir -p /web-dist/target/apache/runtime
+          touch /web-dist/target/apache/runtime/temp.tar.gz
+      - name: Push a file to another repository
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.GIT_CREDENTIALS }}
         with:
-          credentials: ${{ secrets.GIT_CREDENTIALS }}
-      - name: git push
-        run: |
-          rm -rf /tmp/apache-test
-          mkdir -p /tmp/apache-test
-          git clone https://github.com/ATLENA/lat-engine-temp.git /tmp/apache-temp
-          git config --global user.email "lat-apache@github.com"
-          git config --global user.name "lat-apache-actioin"
-          mkdir -p /tmp/apache-temp/apache/${{ github.job }}
-          cp -rf web-dist/target/apache/* /tmp/apache-temp/apache/${{ github.job }}/      
-          cd /tmp/apache-temp && git add . && git commit -a -m "Pushed from lat-apache" && git push
+          source_file: 'web-dist/target/apache'
+          destination_repo: 'ATLENA/lat-engine-temp'
+          destination_folder: 'apache/centos7'
+          user_email: 'lat-apache@github.com'
+          user_name: 'lat-apache-actioin'
+          commit_message: 'from lat-apache'
+#      - uses: de-vri-es/setup-git-credentials@v2
+#        with:
+#          credentials: ${{ secrets.GIT_CREDENTIALS }}
+#      - name: git push
+#        run: |
+#          rm -rf /tmp/apache-test
+#          mkdir -p /tmp/apache-test
+#          git clone https://github.com/ATLENA/lat-engine-temp.git /tmp/apache-temp
+#          git config --global user.email "lat-apache@github.com"
+#          git config --global user.name "lat-apache-actioin"
+#          mkdir -p /tmp/apache-temp/apache/${{ github.job }}
+#          cp -rf web-dist/target/apache/* /tmp/apache-temp/apache/${{ github.job }}/
+#          cd /tmp/apache-temp && git add . && git commit -a -m "Pushed from lat-apache" && git push
 
