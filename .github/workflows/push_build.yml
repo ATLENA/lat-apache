@@ -11,11 +11,11 @@ jobs:
       # check out repo
       - uses: actions/checkout@v2
       # setup JDK
-      - name: Set up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
+#      - name: Set up JDK 11
+#        uses: actions/setup-java@v2
+#        with:
+#          java-version: '11'
+#          distribution: 'adopt'
 #      # Compile Web
 #      - name: Compile Web
 #        uses: ./web-compile/action/centos7
@@ -30,13 +30,15 @@ jobs:
       - name: temp job
         run : |
           mkdir -p web-dist/target/apache/runtime
-          touch web-dist/target/apache/runtime/temp.tar.gz
+          mkdir -p web-dist/target/apache/template
+          touch web-dist/target/apache/runtime/runtime.tar.gz
+          touch web-dist/target/apache/template/template.tar.gz
       - name: Push a file to another repository
         uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
           API_TOKEN_GITHUB: ${{ secrets.LAT_ENGINE_PUSH_TOKEN }}
         with:
-          source_file: 'web-dist/target/apache'
+          source_file: 'web-dist/target/apache/'
           destination_repo: 'ATLENA/lat-engine-temp'
           destination_folder: 'apache/centos7'
           user_email: 'lat-apache@github.com'
