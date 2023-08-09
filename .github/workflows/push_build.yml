@@ -31,8 +31,8 @@ jobs:
         run : |
           mkdir -p web-dist/target/apache/runtime
           mkdir -p web-dist/target/apache/template
-          touch web-dist/target/apache/runtime/runtime.tar.gz
-          touch web-dist/target/apache/template/template.tar.gz
+          touch web-dist/target/apache/runtime/runtime2.tar.gz
+          touch web-dist/target/apache/template/template2.tar.gz
       - name: Push a file to another repository
         uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
         env:
