@@ -39,6 +39,7 @@ jobs:
           user_name: 'lat-apache-actioin'
           commit_message: 'from lat-apache'
   rocky8:
+    needs: centos7
     name: ${{ github.job }}
     runs-on: ubuntu-latest
     steps:
@@ -73,6 +74,7 @@ jobs:
           user_name: 'lat-apache-actioin'
           commit_message: 'from lat-apache'
   amazonlinux2:
+    needs: rocky8
     name: ${{ github.job }}
     runs-on: ubuntu-latest
     steps:
