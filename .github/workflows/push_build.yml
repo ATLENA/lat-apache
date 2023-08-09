@@ -37,4 +37,72 @@ jobs:
           destination_folder: 'apache/${{ github.job }}'
           user_email: 'lat-apache@github.com'
           user_name: 'lat-apache-actioin'
-          commit_message: 'from lat-apache 1'
+          commit_message: 'from lat-apache'
+  rocky8:
+    name: ${{ github.job }}
+    runs-on: ubuntu-latest
+    steps:
+      # check out repo
+      - uses: actions/checkout@v2
+      # setup JDK
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      # Compile Web
+      - name: Compile Web
+        uses: ./web-compile/action/rocky8
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v14
+        with:
+          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/atlena/*" }]'
+          servers: ${{secrets.GH_MVN_REPO_USER_INFO}}
+      # Build Install file
+      - name: Build Open LA:T Web install file
+        run: mvn -B package --file web-dist/pom_release.xml -Dcompile.os.name=${{ github.job }}
+      - name: Push a file to another repository
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.LAT_ENGINE_PUSH_TOKEN }}
+        with:
+          source_file: 'web-dist/target/apache/.'
+          destination_repo: 'ATLENA/lat-engine-temp'
+          destination_folder: 'apache/${{ github.job }}'
+          user_email: 'lat-apache@github.com'
+          user_name: 'lat-apache-actioin'
+          commit_message: 'from lat-apache'
+  amazonlinux2:
+    name: ${{ github.job }}
+    runs-on: ubuntu-latest
+    steps:
+      # check out repo
+      - uses: actions/checkout@v2
+      # setup JDK
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      # Compile Web
+      - name: Compile Web
+        uses: ./web-compile/action/amazonlinux2
+      - name: maven-settings-xml-action
+        uses: whelk-io/maven-settings-xml-action@v14
+        with:
+          repositories: '[{ "id": "github", "url": "https://maven.pkg.github.com/atlena/*" }]'
+          servers: ${{secrets.GH_MVN_REPO_USER_INFO}}
+      # Build Install file
+      - name: Build Open LA:T Web install file
+        run: mvn -B package --file web-dist/pom_release.xml -Dcompile.os.name=${{ github.job }}
+      - name: Push a file to another repository
+        uses: dmnemec/copy_file_to_another_repo_action@v1.1.1
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.LAT_ENGINE_PUSH_TOKEN }}
+        with:
+          source_file: 'web-dist/target/apache/.'
+          destination_repo: 'ATLENA/lat-engine-temp'
+          destination_folder: 'apache/${{ github.job }}'
+          user_email: 'lat-apache@github.com'
+          user_name: 'lat-apache-actioin'
+          commit_message: 'from lat-apache'
