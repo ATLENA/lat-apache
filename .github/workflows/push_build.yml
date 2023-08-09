@@ -34,7 +34,7 @@ jobs:
           git clone https://github.com/ATLENA/lat-engine-temp.git /tmp/apache-temp
           git config --global user.email "lat-apache@github.com"
           git config --global user.name "lat-apache-action"
-          mkdir -p /tmp/apache-temp/apache
+          mkdir -p /tmp/apache-temp/apache/${{ github.job }}
           cp -rf web-dist/target/apache/* /tmp/apache-temp/apache/${{ github.job }}/      
           cd /tmp/apache-temp && git add . && git commit -a -m "Pushed from lat-apache" && git push
 
