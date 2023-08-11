@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo env
+env
 #
 ## shell execute on
 #chmod -R 755 ./web-compile
