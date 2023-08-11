@@ -2,12 +2,10 @@
 name: 'Compile apache'
 description: 'add actions'
 inputs:
-  target_os_image:
+  target-os-image:
     description: 'target os image info'
 runs:
   using: 'docker'
   image: Dockerfile
   env:
     ENV_TEST: 'test1234'
-  args:
-    - ${{ inputs.target_os_image }}
