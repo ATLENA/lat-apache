@@ -1,5 +1,5 @@
 # /Dockerfile
-FROM ${DOCKER_HUB_IMAGE_INFO}
+FROM ${TARGET_OS_IMAGE}
 
 COPY entrypoint.sh /entrypoint.sh
   # entrypoint.sh 파일을 추가하고
