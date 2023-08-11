@@ -42,7 +42,7 @@ jobs:
       - name: Compile Web
         uses: ./web-compile/action/compile-on-docker
         with:
-          target-os-image: ${{ env.TARGET_OS_IMAGE }}
+          target_os_image: ${{ env.TARGET_OS_IMAGE }}
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v14
         with:

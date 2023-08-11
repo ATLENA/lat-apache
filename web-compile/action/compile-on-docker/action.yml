@@ -2,7 +2,7 @@
 name: 'Compile apache'
 description: 'add actions'
 inputs:
-  target-os-image:
+  target_os_image:
     description: 'target os image info'
 runs:
   using: 'docker'
