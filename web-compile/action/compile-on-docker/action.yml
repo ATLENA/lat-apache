@@ -8,4 +8,4 @@ runs:
   using: 'docker'
   image: Dockerfile
   env:
-    target-os-image: ${{ inputs.target-os-image }}
+    TARGET_OS_IMAGE: ${{ inputs.target-os-image }}
