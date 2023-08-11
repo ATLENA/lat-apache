@@ -29,18 +29,20 @@ jobs:
           map: |
             {
               "centos7": {
-                "DOCKER_HUB_IMAGE_INFO": "centos:7"
+                "TARGET_OS_IMAGE": "centos:7"
               },
               "rocky8": {
-                "DOCKER_HUB_IMAGE_INFO": "rockylinux/rockylinux:8.4"
+                "TARGET_OS_IMAGE": "rockylinux/rockylinux:8.4"
               },
               "amazonlinux2": {
-                "DOCKER_HUB_IMAGE_INFO": "amazonlinux:2"
+                "TARGET_OS_IMAGE": "amazonlinux:2"
               }
             }
       # Compile Web
       - name: Compile Web
         uses: ./web-compile/action/compile-on-docker
+        with:
+          target-os-image: ${{ env.TARGET_OS_IMAGE }}
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v14
         with:

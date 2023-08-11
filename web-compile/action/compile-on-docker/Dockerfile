@@ -3,7 +3,7 @@ FROM ${DOCKER_HUB_IMAGE_INFO}
 
 COPY entrypoint.sh /entrypoint.sh
   # entrypoint.sh 파일을 추가하고
-
+RUN env
 RUN chmod +x /entrypoint.sh
   # entrypoint.sh 파일에 권한을 주고
 
