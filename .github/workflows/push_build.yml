@@ -38,6 +38,11 @@ jobs:
                 "TARGET_OS_IMAGE": "amazonlinux:2"
               }
             }
+      # replace from image of dockerfile for compile
+      - name: replace from image of dockerfile
+        run: sed -i "s/RPLACE_WITH_FROM_IMAGE/${{ env.TARGET_OS_IMAGE }}/g" ./web-compile/action/compile-on-docker/Dockerfile
+      - name: replace from image of dockerfile
+        run: cat ./web-compile/action/compile-on-docker/Dockerfile
       # Compile Web
       - name: Compile Web
         uses: ./web-compile/action/compile-on-docker
