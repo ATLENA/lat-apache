@@ -29,7 +29,7 @@ jobs:
           map: |
             {
               "centos7": {
-                "TARGET_OS_IMAGE": "centos:7"
+                "TARGET_OS_IMAGE": "centos"
               },
               "rocky8": {
                 "TARGET_OS_IMAGE": "rockylinux/rockylinux:8.4"
