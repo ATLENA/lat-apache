@@ -9,3 +9,5 @@ runs:
   image: Dockerfile
   env:
     ENV_TEST: 'test1234'
+  args:
+    - ${{ inputs.target_os_image }}
