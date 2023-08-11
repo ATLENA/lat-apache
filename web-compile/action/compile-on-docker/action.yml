@@ -5,6 +5,7 @@ inputs:
   FROM_IMAGE:
     description: 'target os image info'
     required: true
+    default: 'testtest'
 runs:
   using: 'docker'
   image: Dockerfile
