@@ -7,5 +7,5 @@ inputs:
 runs:
   using: 'docker'
   image: Dockerfile
-  env:
-    TARGET_OS_IMAGE: ${{ inputs.target-os-image }}
+#  env:
+#    TARGET_OS_IMAGE: ${{ inputs.target-os-image }}
