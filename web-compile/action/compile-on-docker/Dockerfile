@@ -1,5 +1,5 @@
 # /Dockerfile
-FROM ${TARGET_OS_IMAGE}
+FROM centos:7
 
 COPY entrypoint.sh /entrypoint.sh
   # entrypoint.sh 파일을 추가하고
