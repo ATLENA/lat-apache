@@ -32,7 +32,7 @@ jobs:
                 "TARGET_OS_IMAGE": "centos:7"
               },
               "rocky8": {
-                "TARGET_OS_IMAGE": "rockylinux\/rockylinux:8.4"
+                "TARGET_OS_IMAGE": "rockylinux\\/rockylinux:8.4"
               },
               "amazonlinux2": {
                 "TARGET_OS_IMAGE": "amazonlinux:2"
