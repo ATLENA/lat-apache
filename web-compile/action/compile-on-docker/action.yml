@@ -2,10 +2,9 @@
 name: 'Compile apache'
 description: 'add actions'
 inputs:
-  target-os-image:
+  TARGET_OS_IMAGE:
     description: 'target os image info'
+    required: true
 runs:
   using: 'docker'
   image: Dockerfile
-  env:
-    ENV_TEST: 'test1234'

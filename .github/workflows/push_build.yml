@@ -41,10 +41,8 @@ jobs:
       # Compile Web
       - name: Compile Web
         uses: ./web-compile/action/compile-on-docker
-        env:
-          TEMP_ENV: ${{ env.TARGET_OS_IMAGE }}
         with:
-          target-os-image: ${{ env.TARGET_OS_IMAGE }}
+          TARGET_OS_IMAGE: TEST
       - name: maven-settings-xml-action
         uses: whelk-io/maven-settings-xml-action@v14
         with:
