@@ -3,7 +3,8 @@ FROM centos:7
 
 COPY entrypoint.sh /entrypoint.sh
   # entrypoint.sh 파일을 추가하고
-RUN echo TARGET_OS_IMAGE: $INPUT_TARGET_OS_IMAGE
+RUN echo TARGET_OS_IMAGE1: $INPUT_TARGET_OS_IMAGE
+RUN echo TARGET_OS_IMAGE2: $TARGET_OS_IMAGE
 RUN chmod +x /entrypoint.sh
   # entrypoint.sh 파일에 권한을 주고
 
