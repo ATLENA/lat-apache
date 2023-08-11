@@ -7,5 +7,5 @@ RUN echo TARGET_OS_IMAGE: ${TARGET_OS_IMAGE}
 RUN chmod +x /entrypoint.sh
   # entrypoint.sh 파일에 권한을 주고
 
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 # entrypoint.sh 를 수행합니다.
