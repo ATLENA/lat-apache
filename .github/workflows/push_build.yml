@@ -10,7 +10,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        target-os: [rocky8, centos7, amazonlinux2]
+        target-os: [ubuntu1804, rocky8, centos7, amazonlinux2]
     env:
       TARGET_OS: ${{ matrix.target-os }}
     steps:
@@ -36,6 +36,9 @@ jobs:
               },
               "amazonlinux2": {
                 "TARGET_OS_IMAGE": "amazonlinux:2"
+              },
+              "ubuntu1804": {
+                "TARGET_OS_IMAGE": "ubuntu:18.04"
               }
             }
       # replace from image of dockerfile for compile

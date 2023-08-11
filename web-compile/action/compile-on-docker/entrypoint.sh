@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "file list"
-
 # shell execute on
 chmod -R 755 ./web-compile
 
@@ -9,6 +7,13 @@ chmod -R 755 ./web-compile
 ./web-compile/bin/web-clean.sh
 
 # build apache httpd
-./web-compile/bin/web-build.sh
+if [[ $TARGET_OS == *"ubuntu"* ]]; then
+  echo "===== ubuntu"
+  ./web-compile/bin/web-build-ubuntu.sh
+else
+  echo "===== not ubuntu"
+  ./web-compile/bin/web-build.sh
+fi
 
-echo "action test"
+
+
