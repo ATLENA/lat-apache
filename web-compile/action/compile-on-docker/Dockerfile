@@ -11,5 +11,5 @@ RUN ls -al /tmp
 
 RUN cat /tmp/entrypoint.sh
 
-ENTRYPOINT ["/tmp/entrypoint.sh"]
+ENTRYPOINT ["sh","/tmp/entrypoint.sh"]
 # entrypoint.sh 를 수행합니다.
