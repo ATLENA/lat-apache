@@ -5,4 +5,6 @@ if [ ! -f /usr/include/sys/socketvar.h ]; then
   echo "#include <sys/socket.h>" > /usr/include/sys/socketvar.h
 fi
 
+cat /usr/include/sys/socketvar.h
+
 ${SCRIPTPATH}/web-build.sh
