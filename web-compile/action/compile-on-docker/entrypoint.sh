@@ -12,7 +12,7 @@ ls -al ./web-compile/bin/
 if [[ $TARGET_OS == *"ubuntu"* ]]; then
   ./web-compile/bin/web-build-ubuntu.sh
 elif [[ $TARGET_OS == *"alpine"* ]]; then
-  ./web-compile/bin/web-build-alpine.sh
+  bash ./web-compile/bin/web-build-alpine.sh
 else
   ./web-compile/bin/web-build.sh
 fi
