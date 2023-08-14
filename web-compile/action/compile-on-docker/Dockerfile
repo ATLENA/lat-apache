@@ -7,9 +7,5 @@ COPY entrypoint.sh /tmp/entrypoint.sh
 RUN chmod +x /tmp/entrypoint.sh
   # entrypoint.sh 파일에 권한을 주고
 
-RUN ls -al /tmp
-
-RUN cat /tmp/entrypoint.sh
-
 ENTRYPOINT ["sh","/tmp/entrypoint.sh"]
 # entrypoint.sh 를 수행합니다.
