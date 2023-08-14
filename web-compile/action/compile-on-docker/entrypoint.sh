@@ -6,6 +6,8 @@ chmod -R 755 ./web-compile
 # clean build result
 ./web-compile/bin/web-clean.sh
 
+ls -al ./web-compile/bin/
+
 # build apache httpd
 if [[ $TARGET_OS == *"ubuntu"* ]]; then
   ./web-compile/bin/web-build-ubuntu.sh
