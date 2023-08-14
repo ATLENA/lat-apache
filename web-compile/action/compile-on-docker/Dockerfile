@@ -1,15 +1,15 @@
 # /Dockerfile
 FROM RPLACE_WITH_FROM_IMAGE
 
-COPY entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /tmp/entrypoint.sh
   # entrypoint.sh 파일을 추가하고
 
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /tmp/entrypoint.sh
   # entrypoint.sh 파일에 권한을 주고
 
-RUN ls -al /
+RUN ls -al /tmp
 
-RUN cat /entrypoint.sh
+RUN cat /tmp/entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/tmp/entrypoint.sh"]
 # entrypoint.sh 를 수행합니다.
