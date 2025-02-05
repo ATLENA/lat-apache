@@ -10,7 +10,7 @@ echo "---------------------------"
 
 find "$LIB_DIR" -type l | while read -r symlink; do
 
-    origin_file=$(readlink "$symlink")
+    origin_file=$(realpath "$symlink")
 
     if [[ -f "$origin_file" ]]; then
         echo "Replacing symlink: $symlink -> $origin_file"
